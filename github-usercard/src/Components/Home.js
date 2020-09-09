@@ -18,13 +18,6 @@ class Home extends React.Component {
           console.log("my data:", json);
         }
       });
-
-    fetch("https://api.github.com/users/jonathan-portillo/followers")
-      .then((res) => res.json())
-      .then((json) => {
-        console.log("followers", json);
-        this.setState({ githubFollowers: json });
-      });
   }
 
   render() {

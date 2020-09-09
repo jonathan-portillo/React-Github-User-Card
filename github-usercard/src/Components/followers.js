@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { Card, CardBody, CardHeader, CardTitle, Button } from "reactstrap";
 
 class Followers extends React.Component {
   state = {
@@ -16,14 +18,27 @@ class Followers extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1>Followers</h1>
+      <div className="Container">
+        <CardBody>
+          <Button outline color="primary">
+            <Link to="/">Back to my Card</Link>
+          </Button>
+        </CardBody>
+        <h3>Followers</h3>
         {this.state.githubFollowers.map((followers) => (
-          <div>
-            <h2>Username: {followers.login}</h2>
-            <img src={followers.avatar_url} width="300px" />
-            <h3>{followers.url}</h3>
-          </div>
+          <Card>
+            <CardHeader>
+              <CardTitle>Username: {followers.login}</CardTitle>
+            </CardHeader>
+            <CardBody>
+              <img src={followers.avatar_url} width="300px" />
+            </CardBody>
+            <CardBody>
+              <Button href={followers.html_url} outline color="primary">
+                Github Account
+              </Button>
+            </CardBody>
+          </Card>
         ))}
       </div>
     );
